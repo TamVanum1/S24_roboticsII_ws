@@ -157,12 +157,12 @@ class TrackingNode(Node):
         ########### Write your code here ###########
         
         # TODO: Update the control velocity command
-        string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z)
-        self.get_logger().info(string)
         cmd_vel = Twist()
         cmd_vel.linear.x = current_object_pose[0]-0.3
         cmd_vel.linear.y = current_object_pose[1]
         cmd_vel.angular.z = current_object_pose[2]
+        string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z)
+        self.get_logger().info(string)
         return cmd_vel
     
         ############################################
