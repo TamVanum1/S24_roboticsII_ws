@@ -3,6 +3,9 @@ Tyler Duckworth
 Xujun Peng
 
 Guanlin Li
+
+Mingyi Chen
+
 # S24_roboticsII
 ROS2 Workspace for S24 RoboticsII
 
@@ -68,3 +71,11 @@ For the new camera model (astra pro plus, Robot 7~)
 ```
 ros2 launch tracking_control car_camera_proplus_bringup_launch.py
 ```
+
+### Notes from office hour
+Don't run joystick, just run the code to track and move.
+If test the joysticks first, the robot would listen to the command from the joystick, so tracking won't work...
+Should be able to press "Space" to switch controls (needs to be tested though)
+
+7-10: Unplug and plg the camera after boots to fix docker issues.
+Other docker errors: just change another robot...
