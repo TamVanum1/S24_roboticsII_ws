@@ -164,9 +164,9 @@ class TrackingNode(Node):
         # cmd_vel.angular.z = current_object_pose[2]
         
         cmd_vel.linear.y = 0.0 if abs(current_object_pose[1]) <= 0.03 else current_object_pose[1]
-        cmd_vel.linear.z = 0.0 if abs(current_object_pose[2]) <= 0.01 else current_object_pose[2]
+        cmd_vel.angular.z = 0.0 if abs(current_object_pose[2]) <= 0.01 else current_object_pose[2]
 
-        string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
+        string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z)
         self.get_logger().info(string)
 
         
