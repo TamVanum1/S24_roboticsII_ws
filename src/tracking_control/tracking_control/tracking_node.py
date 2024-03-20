@@ -159,14 +159,17 @@ class TrackingNode(Node):
         
         # TODO: Update the control velocity command
         cmd_vel = Twist()
-        cmd_vel.linear.x = current_object_pose[0]-0.5
-        # cmd_vel.linear.y = current_object_pose[1] * 0.6
-        # cmd_vel.angular.z = current_object_pose[2]
-        
-        cmd_vel.linear.y = 0.0 if abs(current_object_pose[1]) <= 0.03 else current_object_pose[1]
-        cmd_vel.angular.z = 0.0 if abs(current_object_pose[2]) <= 0.01 else current_object_pose[2]
+        cmd_vel.linear.x = current_object_pose[0]-0.3
+        if (current_object_pose[1] * 0.6 <= 0.03):
+            cmd_vel.linear.y = 0.0
+        else:
+            cmd_vel.linear.y = current_object_pose[1] * 0.6
+        if (current_object_pose[2] <= 0.01):
+            cmd_vel.angular.z = 0.0
+        else:
+            cmd_vel.angular.z = current_object_pose[2]
 
-        string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z)
+        string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
         self.get_logger().info(string)
 
         
