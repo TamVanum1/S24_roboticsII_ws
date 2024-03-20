@@ -136,6 +136,7 @@ class TrackingNode(Node):
         if self.obj_pose is None:
             cmd_vel = Twist()
             cmd_vel.linear.x = 0.0
+            cmd_vel.linear.y = 0.0
             cmd_vel.angular.z = 0.0
             self.pub_control_cmd.publish(cmd_vel)
             return
@@ -158,11 +159,11 @@ class TrackingNode(Node):
         
         # TODO: Update the control velocity command
         cmd_vel = Twist()
-        cmd_vel.linear.x = 0.8
+        cmd_vel.linear.x = current_object_pose[0]-0.3
         cmd_vel.linear.y = current_object_pose[1]
         cmd_vel.angular.z = current_object_pose[2]
-        string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
-        self.get_logger().info(string)
+        # string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
+        # self.get_logger().info(string)
         return cmd_vel
     
         ############################################
