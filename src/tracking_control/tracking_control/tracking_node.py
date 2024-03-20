@@ -169,7 +169,8 @@ class TrackingNode(Node):
         else:
             cmd_vel.angular.z = current_object_pose[2]
 
-        string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
+        # string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
+        string = str(self.obj_pose)
         self.get_logger().info(string)
 
         
