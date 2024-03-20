@@ -162,8 +162,8 @@ class TrackingNode(Node):
         cmd_vel.linear.x = current_object_pose[0]-0.3
         cmd_vel.linear.y = current_object_pose[1]
         cmd_vel.angular.z = current_object_pose[2]
-        # string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
-        # self.get_logger().info(string)
+        string = str(current_object_pose[0]-0.3) + " " + str(current_object_pose[1]) + " " + str(current_object_pose[2])
+        self.get_logger().info(string)
         return cmd_vel
     
         ############################################
