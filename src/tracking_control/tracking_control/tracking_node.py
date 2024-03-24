@@ -82,7 +82,7 @@ class TrackingNode(Node):
     
         # for PID control
         self.kp = 0.5
-        self.ki = 0.01
+        # self.ki = 0.01
         self.kd = 0.1
         self.prev_err = 0.0
         self.sum_err = 0.0
@@ -172,9 +172,9 @@ class TrackingNode(Node):
         # PID control for z
         cur = current_object_pose[1]
         p = cur*self.kp
-        i = self.sum_err*self.ki
+        # i = self.sum_err*self.ki
         d = (cur - self.prev_err)*self.kd
-        cmd_vel.angular.z = p + i + d
+        cmd_vel.angular.z = p + d
         self.sum_err += cur
         self.prev_err = cur
 
