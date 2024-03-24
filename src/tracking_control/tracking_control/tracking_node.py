@@ -80,15 +80,15 @@ class TrackingNode(Node):
         # Create a subscriber to the detected object pose
         self.sub_detected_obj_pose = self.create_subscription(PoseStamped, '/detected_color_object_pose', self.detected_obj_pose_callback, 10)
     
-        # Create timer, running at 100Hz
-        self.timer = self.create_timer(0.01, self.timer_update)
-
         # for PID control
         self.kp = 0.5
         self.ki = 0.2
         self.kd = 0.5
         self.prev_err = 0.0
         self.sum_err = 0.0
+        
+        # Create timer, running at 100Hz
+        self.timer = self.create_timer(0.01, self.timer_update)
     
     def detected_obj_pose_callback(self, msg):
         #self.get_logger().info('Received Detected Object Pose')
