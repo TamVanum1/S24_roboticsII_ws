@@ -175,7 +175,7 @@ class TrackingNode(Node):
         # i = self.sum_err*self.ki
         d = (cur - self.prev_err)*self.kd
         cmd_vel.angular.z = p + d
-        self.sum_err += cur
+        # self.sum_err += cur
         self.prev_err = cur
 
         string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z) + " "\
