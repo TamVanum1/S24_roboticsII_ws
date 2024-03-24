@@ -144,7 +144,7 @@ class TrackingNode(Node):
             cmd_vel = Twist()
             cmd_vel.linear.x = 0.0
             cmd_vel.linear.y = 0.0
-            cmd_vel.angular.z = 0.0
+            cmd_vel.angular.z = 0.4
             self.pub_control_cmd.publish(cmd_vel)
             return
         
