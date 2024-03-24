@@ -81,7 +81,7 @@ class TrackingNode(Node):
         self.sub_detected_obj_pose = self.create_subscription(PoseStamped, '/detected_color_object_pose', self.detected_obj_pose_callback, 10)
     
         # for PID control
-        self.kp = 0.5
+        self.kp = 0.7
         # self.ki = 0.01
         self.kd = 10
         self.prev_err = 0.0
@@ -167,7 +167,7 @@ class TrackingNode(Node):
         # TODO: Update the control velocity command
         cmd_vel = Twist()
         cmd_vel.linear.y = 0.0
-        cmd_vel.linear.x = (current_object_pose[0]-0.4) * 1.2
+        cmd_vel.linear.x = (current_object_pose[0]-0.4) * 1.5
 
         # PID control for z
         cur = current_object_pose[1]
