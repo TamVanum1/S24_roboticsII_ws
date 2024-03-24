@@ -82,6 +82,13 @@ class TrackingNode(Node):
     
         # Create timer, running at 100Hz
         self.timer = self.create_timer(0.01, self.timer_update)
+
+        # for PID control
+        self.kp = 0.5
+        self.ki = 0.2
+        self.kd = 0.5
+        self.prev_err = 0.0
+        self.sum_err = 0.0
     
     def detected_obj_pose_callback(self, msg):
         #self.get_logger().info('Received Detected Object Pose')
@@ -160,21 +167,18 @@ class TrackingNode(Node):
         # TODO: Update the control velocity command
         cmd_vel = Twist()
         cmd_vel.linear.y = 0.0
-        cmd_vel.linear.x = current_object_pose[0]-0.5
-        # if (abs(current_object_pose[1]) <= 0.001):
-        #     # cmd_vel.linear.y = 0.0
-        #     cmd_vel.angular.z = 0.0
-        # else:
-            # cmd_vel.linear.y = current_object_pose[1] * 0.6
-        cmd_vel.angular.z = current_object_pose[1] * 0.5
+        cmd_vel.linear.x = current_object_pose[0]-0.4
 
-       # if (current_object_pose[2] <= 0.03):
-       #     cmd_vel.angular.z = 0.0
-       # else:
-       #     cmd_vel.angular.z = current_object_pose[2]
+        # PID control for z
+        cur = current_object_pose[1]
+        p = cur*self.kp
+        i = self.sum_err*self.ki
+        d = (cur - self.prev_err)*self.kd
+        cmd_vel.angular.z = p + i + d
+        self.sum_err += cur
+        self.prev_err = cur
 
         string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z)
-        # string = str(self.obj_pose)
         self.get_logger().info(string)
 
         
