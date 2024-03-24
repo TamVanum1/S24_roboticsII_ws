@@ -160,12 +160,12 @@ class TrackingNode(Node):
         # TODO: Update the control velocity command
         cmd_vel = Twist()
         cmd_vel.linear.x = current_object_pose[0]-0.5
-        if (current_object_pose[1] <= 0.03):
+        if (current_object_pose[1] <= 0.001):
             # cmd_vel.linear.y = 0.0
             cmd_vel.angular.z = 0.0
         else:
             # cmd_vel.linear.y = current_object_pose[1] * 0.6
-            cmd_vel.angular.z = current_object_pose[1] * 0.8
+            cmd_vel.angular.z = current_object_pose[1]
 
        # if (current_object_pose[2] <= 0.03):
        #     cmd_vel.angular.z = 0.0
