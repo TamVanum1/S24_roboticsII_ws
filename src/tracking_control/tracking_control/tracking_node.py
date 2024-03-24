@@ -83,7 +83,7 @@ class TrackingNode(Node):
         # for PID control
         self.kp = 0.7
         # self.ki = 0.01
-        self.kd = 10
+        self.kd = 20
         self.prev_err = 0.0
         self.sum_err = 0.0
 
