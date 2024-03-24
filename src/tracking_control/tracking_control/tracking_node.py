@@ -83,7 +83,7 @@ class TrackingNode(Node):
         # for PID control
         self.kp = 1
         # self.ki = 0.01
-        self.kd = 20
+        self.kd = 15
         self.prev_err = 0.0
         self.sum_err = 0.0
 
@@ -167,7 +167,7 @@ class TrackingNode(Node):
         # TODO: Update the control velocity command
         cmd_vel = Twist()
         cmd_vel.linear.y = 0.0
-        cmd_vel.linear.x = (current_object_pose[0]-0.4) * 2
+        cmd_vel.linear.x = (current_object_pose[0]-0.4) * 1.2
 
         # PID control for z
         cur = current_object_pose[1]
