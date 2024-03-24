@@ -166,7 +166,7 @@ class TrackingNode(Node):
             cmd_vel.angular.z = 0.0
         else:
             # cmd_vel.linear.y = current_object_pose[1] * 0.6
-            cmd_vel.angular.z = current_object_pose[1]
+            cmd_vel.angular.z = current_object_pose[1] * 0.5
 
        # if (current_object_pose[2] <= 0.03):
        #     cmd_vel.angular.z = 0.0
