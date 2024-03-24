@@ -82,11 +82,11 @@ class TrackingNode(Node):
     
         # for PID control
         self.kp = 0.5
-        self.ki = 0.2
-        self.kd = 0.5
+        self.ki = 0.01
+        self.kd = 0.1
         self.prev_err = 0.0
         self.sum_err = 0.0
-        
+
         # Create timer, running at 100Hz
         self.timer = self.create_timer(0.01, self.timer_update)
     
@@ -178,7 +178,8 @@ class TrackingNode(Node):
         self.sum_err += cur
         self.prev_err = cur
 
-        string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z)
+        string = str(cmd_vel.linear.x) + " " + str(cmd_vel.linear.y) + " " + str(cmd_vel.angular.z) + " "\
+            + str(self.sum_err) + " " + str(self.prev_err)
         self.get_logger().info(string)
 
         
